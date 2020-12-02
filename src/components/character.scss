@@ -1,0 +1,38 @@
+.character-box{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 400px;
+    align-items: center;
+    margin: auto;
+    .image{
+        max-width: 200px;
+        z-index: 1;
+        img{
+            width: 100%;
+            border-radius: 50%;
+        }
+    }
+    .info{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        padding: 60px 20px 50px;
+        box-shadow: 0 1px 6px rgba(32,33,36,.28);
+        border-color: rgba(223,225,229,0);
+        width: 100%;
+        margin-top: -50px;
+        font-size: 14px;
+        >div{
+            margin-bottom: 10px;
+            span{
+                &:first-child{
+                    min-width: 150px;
+                }
+                &:last-child{
+                    margin-left: 10px;;
+                }
+            }
+        }
+    }
+}
