@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<ul>
+  <li
+    className="list-item-box"
+  >
+    <a
+      href="/detail/19"
+      onClick={[Function]}
+    >
+      <div
+        className="image"
+      >
+        <img
+          alt="character-image"
+          src="https://rickandmortyapi.com/api/character/avatar/19.jpeg"
+        />
+      </div>
+      <div
+        className="name"
+      >
+        Antenna Rick
+      </div>
+    </a>
+  </li>
+  <li
+    className="list-item-box"
+  >
+    <a
+      href="/detail/20"
+      onClick={[Function]}
+    >
+      <div
+        className="image"
+      >
+        <img
+          alt="character-image"
+          src="https://rickandmortyapi.com/api/character/avatar/20.jpeg"
+        />
+      </div>
+      <div
+        className="name"
+      >
+        Ants in my Eyes Johnson
+      </div>
+    </a>
+  </li>
+</ul>
+`;

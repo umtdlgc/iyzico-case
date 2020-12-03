@@ -1,10 +1,9 @@
-
-import { render, screen } from '@testing-library/react';
+import React from 'react';
+import renderer from 'react-test-renderer';
 import { BrowserRouter as Router } from "react-router-dom";
-
 import List from "./list";
 
-test('renders learn react link', () => {
+it('renders correctly', () => {
     const arr = [
         {
             id: 19,
@@ -35,8 +34,8 @@ test('renders learn react link', () => {
             created: "2017-11-04T22:34:53.659Z",
         },
     ];
-    render(<Router><List items={arr} /></Router>);
-    
-
-    
+    const tree = renderer
+        .create(<Router><List items={arr} /></Router>)
+        .toJSON();
+    expect(tree).toMatchSnapshot();
 });
