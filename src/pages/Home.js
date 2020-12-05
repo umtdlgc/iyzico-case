@@ -10,7 +10,7 @@ const Home = (props) => {
 
     useEffect(() => {
         if (isLoading) {
-            let url = state.pagination == null ? state.api : state.pagination.next;
+            let url = state.pagination === null ? state.api : state.pagination.next;
             fetch(url)
                 .then((response) => response.json())
                 .then((data) => {
@@ -46,7 +46,7 @@ const Home = (props) => {
             setIsLoading(true);
         }
     };
-    if (hasError != '') {
+    if (hasError !== '') {
         return (
             <div id="app">
                 <div className="errorMessage">{hasError}</div>
@@ -58,7 +58,7 @@ const Home = (props) => {
                 <List items={state.characters} />
                 <div className="loader" ref={loader}>
                     <svg className="circular" viewBox="25 25 50 50">
-                        <circle className="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+                        <circle className="path" cx="50" cy="50" r="20" fill="none" strokeWidth="2" strokeMiterlimit="10" />
                     </svg>
                 </div>
             </div>

@@ -15,7 +15,7 @@ const Home = (props) => {
     const page = parseInt(props.match.params.id);
 
     useEffect(() => {
-        if (nextLoading && state.pageInfo.next != null) {
+        if (nextLoading && state.pageInfo.next !== null) {
             let url = state.api + '?page=' + state.pageInfo.next;
             fetch(url)
                 .then((response) => response.json())
@@ -25,7 +25,7 @@ const Home = (props) => {
                     } else {
                         setCharacters([...characters, ...data.results]);
                         dispatch({ type: 'SET_PAGEINFO_CURRENT_PAGE', value: state.pageInfo.next });
-                        if (data.info.next != null) {
+                        if (data.info.next !== null) {
                             dispatch({ type: 'SET_PAGEINFO_NEXT', value: state.pageInfo.next + 1 });
                         } else {
                             dispatch({ type: 'SET_PAGEINFO_NEXT', value: null });
@@ -50,7 +50,7 @@ const Home = (props) => {
                     setNextLoading(false);
                 });
         }
-        if (prevLoading && state.pageInfo.prev != null) {
+        if (prevLoading && state.pageInfo.prev !== null) {
             let url = state.api + '?page=' + state.pageInfo.prev;
             const firstItemInView = document.querySelectorAll('.list-item-box')[0];
             fetch(url)
@@ -60,7 +60,7 @@ const Home = (props) => {
                     const { top, right, bottom, left } = firstItemInView.getBoundingClientRect();
                     window.scrollTo(0, top);
                     dispatch({ type: 'SET_PAGEINFO_CURRENT_PAGE', value: state.pageInfo.prev });
-                    if (data.info.prev != null) {
+                    if (data.info.prev !== null) {
                         dispatch({ type: 'SET_PAGEINFO_PREV', value: state.pageInfo.currentPage - 1 });
                     } else {
                         dispatch({ type: 'SET_PAGEINFO_PREV', value: null });
@@ -137,7 +137,7 @@ const Home = (props) => {
             }
         }
     };
-    if (hasError != '') {
+    if (hasError !== '') {
         return (
             <div id="app">
                 <div className="errorMessage">{hasError}</div>
@@ -146,17 +146,17 @@ const Home = (props) => {
     } else {
         return (
             <div id="app">
-                {state.pageInfo.prev != null && !prevInfinitiFlag ? (
+                {state.pageInfo.prev !== null && !prevInfinitiFlag && state.pageInfo.prev !== 0 ? (
                     <button onClick={loadPreviousPage} className="loadPrev">
                         Load Prev
                     </button>
                 ) : (
                     ''
                 )}
-                {state.pageInfo.prev != null && prevInfinitiFlag ? (
+                {state.pageInfo.prev !== null && prevInfinitiFlag ? (
                     <div className="loader" ref={loaderPrev}>
                         <svg className="circular" viewBox="25 25 50 50">
-                            <circle className="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+                            <circle className="path" cx="50" cy="50" r="20" fill="none" strokeWidth="2" strokeMiterlimit="10" />
                         </svg>
                     </div>
                 ) : (
@@ -164,10 +164,10 @@ const Home = (props) => {
                 )}
 
                 <List items={characters} />
-                {state.pageInfo.next != null ? (
+                {state.pageInfo.next !== null ? (
                     <div className="loader" ref={loaderNext}>
                         <svg className="circular" viewBox="25 25 50 50">
-                            <circle className="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+                            <circle className="path" cx="50" cy="50" r="20" fill="none" strokeWidth="2" strokeMiterlimit="10" />
                         </svg>
                     </div>
                 ) : (

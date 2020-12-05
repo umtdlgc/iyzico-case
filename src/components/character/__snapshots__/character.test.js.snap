@@ -2,21 +2,65 @@
 
 exports[`renders correctly 1`] = `
 <div
-  className="loader"
+  className="character-box"
 >
-  <svg
-    className="circular"
-    viewBox="25 25 50 50"
+  <div
+    className="image"
   >
-    <circle
-      className="path"
-      cx="50"
-      cy="50"
-      fill="none"
-      r="20"
-      stroke-miterlimit="10"
-      stroke-width="2"
+    <img
+      alt="Big Boobed Waitress"
+      src="https://rickandmortyapi.com/api/character/avatar/41.jpeg"
     />
-  </svg>
+  </div>
+  <div
+    className="info"
+  >
+    <div>
+      <span>
+        Name:
+      </span>
+      <span>
+        Big Boobed Waitress
+      </span>
+    </div>
+    <div>
+      <span>
+        From:
+      </span>
+      <span>
+        Fantasy World
+      </span>
+    </div>
+    <div>
+      <span>
+        Last Five Seen In:
+      </span>
+      <span>
+        <ul>
+          <li>
+            Close Rick-counters of the Rick Kind
+          </li>
+          <li>
+            The Ricklantis Mixup
+          </li>
+        </ul>
+      </span>
+    </div>
+  </div>
+  <button
+    className="btn"
+    onClick={[Function]}
+  >
+    <div
+      className="bk-btn"
+    >
+      <div
+        className="bk-btn-triangle"
+      />
+      <div
+        className="bk-btn-bar"
+      />
+    </div>
+  </button>
 </div>
 `;

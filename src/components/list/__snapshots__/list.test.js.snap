@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-<ul>
+<ul
+  className="list"
+>
   <li
     className="list-item-box"
     data-id={19}
@@ -14,7 +16,7 @@ exports[`renders correctly 1`] = `
         className="image"
       >
         <img
-          alt="character-image"
+          alt="Antenna Rick"
           src="https://rickandmortyapi.com/api/character/avatar/19.jpeg"
         />
       </div>
@@ -39,7 +41,7 @@ exports[`renders correctly 1`] = `
         className="image"
       >
         <img
-          alt="character-image"
+          alt="Ants in my Eyes Johnson"
           src="https://rickandmortyapi.com/api/character/avatar/20.jpeg"
         />
       </div>
