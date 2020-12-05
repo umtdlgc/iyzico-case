@@ -2,13 +2,13 @@ import React, { useEffect, useState, useRef, useContext } from 'react';
 import Context from '../context/store';
 import List from './../components/list/list';
 import { useHistory } from 'react-router-dom';
-
-function Home(props) {
+const Home = (props) => {
     const history = useHistory();
     const { state, dispatch } = useContext(Context);
     const [nextLoading, setNextLoading] = useState(false);
     const [prevLoading, setPrevLoading] = useState(false);
     const [prevInfinitiFlag, setPrevInfinitiFlag] = useState(false);
+    const [hasError, setHasError] = useState('');
     const [characters, setCharacters] = useState([]);
     const loaderNext = useRef(null);
     const loaderPrev = useRef(null);
@@ -20,27 +20,31 @@ function Home(props) {
             fetch(url)
                 .then((response) => response.json())
                 .then((data) => {
-                    setCharacters([...characters, ...data.results]);
-                    dispatch({ type: 'SET_PAGEINFO_CURRENT_PAGE', value: state.pageInfo.next });
-                    if (data.info.next != null) {
-                        dispatch({ type: 'SET_PAGEINFO_NEXT', value: state.pageInfo.next + 1 });
+                    if (data.error) {
+                        setHasError(data.error);
                     } else {
-                        dispatch({ type: 'SET_PAGEINFO_NEXT', value: null });
+                        setCharacters([...characters, ...data.results]);
+                        dispatch({ type: 'SET_PAGEINFO_CURRENT_PAGE', value: state.pageInfo.next });
+                        if (data.info.next != null) {
+                            dispatch({ type: 'SET_PAGEINFO_NEXT', value: state.pageInfo.next + 1 });
+                        } else {
+                            dispatch({ type: 'SET_PAGEINFO_NEXT', value: null });
+                        }
+                        if (state.pageInfo.prev == null && !prevInfinitiFlag) {
+                            dispatch({ type: 'SET_PAGEINFO_PREV', value: state.pageInfo.currentPage - 1 });
+                        }
+                        setNextLoading(false);
+                        const observerOptions = {
+                            root: null,
+                            rootMargin: '20px',
+                            threshold: 1.0,
+                        };
+                        let listItems = document.querySelectorAll('.list-item-box');
+                        const listObserver = new IntersectionObserver(listHandleObserver, observerOptions);
+                        listItems.forEach((x) => {
+                            listObserver.observe(x);
+                        });
                     }
-                    if (state.pageInfo.prev == null && !prevInfinitiFlag) {
-                        dispatch({ type: 'SET_PAGEINFO_PREV', value: state.pageInfo.currentPage - 1 });
-                    }
-                    setNextLoading(false);
-                    const observerOptions = {
-                        root: null,
-                        rootMargin: '20px',
-                        threshold: 1.0,
-                    };
-                    let listItems = document.querySelectorAll('.list-item-box');
-                    const listObserver = new IntersectionObserver(listHandleObserver, observerOptions);
-                    listItems.forEach((x) => {
-                        listObserver.observe(x);
-                    });
                 })
                 .catch((err) => {
                     setNextLoading(false);
@@ -130,34 +134,47 @@ function Home(props) {
                 let id = entry.target.dataset.id;
                 let currentPage = Math.ceil(id / 20);
                 history.push('page=' + currentPage);
-                console.log(currentPage);
             }
         }
     };
-    return (
-        <div id="app">
-            {state.pageInfo.prev != null && !prevInfinitiFlag ? <button onClick={loadPreviousPage}>Load Prev</button> : ''}
-            {state.pageInfo.prev != null && prevInfinitiFlag ? (
-                <div className="loader" ref={loaderPrev}>
-                    <svg className="circular" viewBox="25 25 50 50">
-                        <circle className="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
-                    </svg>
-                </div>
-            ) : (
-                ''
-            )}
+    if (hasError != '') {
+        return (
+            <div id="app">
+                <div className="errorMessage">{hasError}</div>
+            </div>
+        );
+    } else {
+        return (
+            <div id="app">
+                {state.pageInfo.prev != null && !prevInfinitiFlag ? (
+                    <button onClick={loadPreviousPage} className="loadPrev">
+                        Load Prev
+                    </button>
+                ) : (
+                    ''
+                )}
+                {state.pageInfo.prev != null && prevInfinitiFlag ? (
+                    <div className="loader" ref={loaderPrev}>
+                        <svg className="circular" viewBox="25 25 50 50">
+                            <circle className="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+                        </svg>
+                    </div>
+                ) : (
+                    ''
+                )}
 
-            <List items={characters} />
-            {state.pageInfo.next != null ? (
-                <div className="loader" ref={loaderNext}>
-                    <svg className="circular" viewBox="25 25 50 50">
-                        <circle className="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
-                    </svg>
-                </div>
-            ) : (
-                ''
-            )}
-        </div>
-    );
-}
+                <List items={characters} />
+                {state.pageInfo.next != null ? (
+                    <div className="loader" ref={loaderNext}>
+                        <svg className="circular" viewBox="25 25 50 50">
+                            <circle className="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+                        </svg>
+                    </div>
+                ) : (
+                    ''
+                )}
+            </div>
+        );
+    }
+};
 export default Home;

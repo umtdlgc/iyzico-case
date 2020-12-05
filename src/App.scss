@@ -35,7 +35,9 @@ $width: 50px;
         padding-top: 100%;
     }
 }
-
+.errorMessage {
+    text-align: center;
+}
 .circular {
     animation: rotate 2s linear infinite;
     height: 100%;
