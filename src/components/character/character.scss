@@ -1,0 +1,80 @@
+.character-box {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 300px;
+    align-items: center;
+    margin: auto;
+    position: relative;
+    margin-top: 30px;
+    .image {
+        max-width: 200px;
+        z-index: 1;
+        img {
+            width: 100%;
+            border-radius: 50%;
+        }
+    }
+    .info {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        padding: 120px 20px 50px;
+        box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
+        border-color: rgba(223, 225, 229, 0);
+        width: 100%;
+        margin-top: -100px;
+        font-size: 14px;
+        background: rgb(60, 62, 68);
+        color: #fff;
+        border-radius: 5px;
+        > div {
+            margin-bottom: 10px;
+            span {
+                li {
+                    word-break: break-all;
+                }
+                &:first-child {
+                    min-width: 150px;
+                }
+                &:last-child {
+                    margin-left: 10px;
+                }
+            }
+        }
+    }
+}
+$bkBtnSize: 25px;
+.btn {
+    position: absolute;
+    border: none;
+    left: 0;
+    top: 0;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    .bk-btn {
+        height: $bkBtnSize;
+        width: $bkBtnSize;
+        background: rgb(60, 62, 68);
+        border-radius: 50%;
+        .bk-btn-triangle {
+            position: relative;
+            top: $bkBtnSize * 0.25;
+            left: $bkBtnSize * 0.2;
+            width: 0;
+            height: 0;
+            border-top: $bkBtnSize * 0.25 solid transparent;
+            border-bottom: $bkBtnSize * 0.25 solid transparent;
+            border-right: $bkBtnSize * 0.25 solid white;
+        }
+        .bk-btn-bar {
+            position: relative;
+            background-color: white;
+            height: $bkBtnSize * 0.15;
+            width: $bkBtnSize * 0.25;
+            top: $bkBtnSize * -0.07;
+            left: $bkBtnSize * 0.44;
+        }
+    }
+}
