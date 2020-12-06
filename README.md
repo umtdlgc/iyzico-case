@@ -12,6 +12,7 @@ Scroll edildikçe url deki page değeri güncellemektedir. Detay sayfasından ge
 Örnek Test URL: http://localhost:3000/page=5
 ![alt text](https://raw.githubusercontent.com/umtdlgc/iyzico-case/main/public/assets/iyzico-case-homev2.PNG)
 
+## SonarQube Kod Kalite Test Sonucu
 Proje tamamlandıktan sonrasıda sonarqube üzerinden test edilerek kontrol yapılmıştır.
 ![alt text](https://raw.githubusercontent.com/umtdlgc/iyzico-case/main/public/assets/iyzico-sonarqube-result.PNG)
 
