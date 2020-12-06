@@ -29,7 +29,7 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### IYZICO Case Notları
+## IYZICO Case Notları
 
 Proje içerisinde 2 farklı case yaklaşıma sahip infiniti-scroll içeren anasayfa bulunmaktadır.
 
