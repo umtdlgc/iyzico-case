@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<li
+  className="list-item-box"
+  data-id={19}
+>
+  <a
+    href="/detail/19"
+    onClick={[Function]}
+  >
+    <div
+      className="image"
+    >
+      <img
+        alt="Antenna Rick"
+        src="https://rickandmortyapi.com/api/character/avatar/19.jpeg"
+      />
+    </div>
+    <div
+      className="name"
+    >
+      19
+      -
+      Antenna Rick
+    </div>
+  </a>
+</li>
+`;

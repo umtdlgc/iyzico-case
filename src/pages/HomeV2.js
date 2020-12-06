@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef, useContext } from 'react';
 import Context from '../context/store';
 import List from './../components/list/list';
 import { useHistory } from 'react-router-dom';
-const Home = (props) => {
+const HomeV2 = (props) => {
     const history = useHistory();
     const { state, dispatch } = useContext(Context);
     const [nextLoading, setNextLoading] = useState(false);
@@ -57,8 +57,8 @@ const Home = (props) => {
                 .then((response) => response.json())
                 .then((data) => {
                     setCharacters([...data.results, ...characters]);
-                    const { top, right, bottom, left } = firstItemInView.getBoundingClientRect();
-                    window.scrollTo(0, top);
+                    const rect = firstItemInView.getBoundingClientRect();
+                    window.scrollTo(0, rect.top);
                     dispatch({ type: 'SET_PAGEINFO_CURRENT_PAGE', value: state.pageInfo.prev });
                     if (data.info.prev !== null) {
                         dispatch({ type: 'SET_PAGEINFO_PREV', value: state.pageInfo.currentPage - 1 });
@@ -177,4 +177,4 @@ const Home = (props) => {
         );
     }
 };
-export default Home;
+export default HomeV2;

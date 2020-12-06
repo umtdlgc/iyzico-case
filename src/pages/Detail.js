@@ -8,6 +8,7 @@ const Detail = (props) => {
     const [loadedCharacter, setloadedCharacter] = useState(null);
     const [lastFiveEpisode, setLastFiveEpisode] = useState([]);
     const { id } = useParams();
+    let lastFiveEpisodeQuery = '';
     useEffect(() => {
         fetch('https://rickandmortyapi.com/api/character/' + id)
             .then((response) => response.json())
@@ -16,15 +17,15 @@ const Detail = (props) => {
                     setHasError(data.error);
                 } else {
                     setloadedCharacter(data);
-                    let lastFiveEpisode = '';
+                    
                     data.episode
                         .reverse()
                         .slice(0, 5)
                         .forEach(function (item) {
-                            lastFiveEpisode += item.match(/\/([^\/]+)\/?$/)[1] + ',';
+                            lastFiveEpisodeQuery += item.match(/\/([^\/]+)\/?$/)[1] + ',';
                         });
 
-                    return fetch('https://rickandmortyapi.com/api/episode/' + lastFiveEpisode);
+                    return fetch('https://rickandmortyapi.com/api/episode/' + lastFiveEpisodeQuery);
                 }
                 setIsLoading(false);
             })
@@ -41,11 +42,11 @@ const Detail = (props) => {
         return (
             <div className="loader">
                 <svg className="circular" viewBox="25 25 50 50">
-                    <circle className="path" cx="50" cy="50" r="20" fill="none" strokeWidth="2" stroke-miterlimit="10" />
+                    <circle className="path" cx="50" cy="50" r="20" fill="none" strokeWidth="2" strokeMiterlimit="10" />
                 </svg>
             </div>
         );
-    } else if (hasError != '') {
+    } else if (hasError !== '') {
         return <div className="errorMessage">{hasError}</div>;
     } else {
         return (

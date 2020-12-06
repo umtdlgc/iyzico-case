@@ -68,3 +68,20 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `yarn build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+### IYZICO Case Notları
+
+Proje içerisinde 2 farklı case yaklaşıma sahip infiniti-scroll içeren anasayfa bulunmaktadır.
+
+Scroll yapılarak data çekme işlemi yapılır ve bir sonraki requestin nereye atılacağı burdan belirlenir. Detay sayfasına gidip geri geldikten sonra state sıfırlanmamış, aynı şekilde durmaktadır. Kalınan pageden scroll edilmeye devam edilebilmektedir.
+
+Örnek Test URL: http://localhost:3000/
+![alt text](https://github.com/umtdlgc/iyzico-case/blob/main/public/assets/iyzico-case-homev1.png?raw=true)
+
+Scroll edildikçe url deki page değeri güncellemektedir. Detay sayfasından geri dönüldüğünde yada page parametresi ile gelindiğinde (page=5) ilgili sayfanın datalarını apiden çekilmektedir.Bu casede infiniti-scroll 2 taraflı çekilecek şekilde ayarlanmıştır.
+
+Örnek Test URL: http://localhost:3000/page=5
+![alt text](https://github.com/umtdlgc/iyzico-case/blob/main/public/assets/iyzico-case-homev2.png?raw=true)
+
+Proje tamamlandıktan sonrasıda sonarqube üzerinden test edilerek kontrol yapılmıştır.
+![alt text](https://github.com/umtdlgc/iyzico-case/blob/main/public/assets/iyzico-sonarqube-result.png?raw=true)

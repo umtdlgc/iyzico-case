@@ -10,7 +10,7 @@ const Home = (props) => {
 
     useEffect(() => {
         if (isLoading) {
-            let url = state.pagination === null ? state.api : state.pagination.next;
+            let url = state.pagination === null ? state.api + '?page=1' : state.pagination.next;
             fetch(url)
                 .then((response) => response.json())
                 .then((data) => {

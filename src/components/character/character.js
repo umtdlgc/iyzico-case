@@ -6,7 +6,6 @@ const Character = (props) => {
     const char = props.char;
     const lastepisode = props.lastepisode;
     const history = useHistory();
-    console.log(lastepisode);
     const returnBack = () => {
         history.action === 'POP' ? history.push('/') : history.goBack();
     };
