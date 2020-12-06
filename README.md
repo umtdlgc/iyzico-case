@@ -1,3 +1,20 @@
+# IYZICO Case Notları
+
+Proje içerisinde 2 farklı case yaklaşıma sahip infiniti-scroll içeren anasayfa bulunmaktadır.
+
+Scroll yapılarak data çekme işlemi yapılır ve bir sonraki requestin nereye atılacağı burdan belirlenir. Detay sayfasına gidip geri geldikten sonra state sıfırlanmamış, aynı şekilde durmaktadır. Kalınan pageden scroll edilmeye devam edilebilmektedir.
+
+Örnek Test URL: http://localhost:3000/
+![alt text](https://raw.githubusercontent.com/umtdlgc/iyzico-case/main/public/assets/iyzico-case-homev1.PNG)
+
+Scroll edildikçe url deki page değeri güncellemektedir. Detay sayfasından geri dönüldüğünde yada page parametresi ile gelindiğinde (page=5) ilgili sayfanın datalarını apiden çekilmektedir.Bu casede infiniti-scroll 2 taraflı çekilecek şekilde ayarlanmıştır.
+
+Örnek Test URL: http://localhost:3000/page=5
+![alt text](https://raw.githubusercontent.com/umtdlgc/iyzico-case/main/public/assets/iyzico-case-homev2.PNG)
+
+Proje tamamlandıktan sonrasıda sonarqube üzerinden test edilerek kontrol yapılmıştır.
+![alt text](https://raw.githubusercontent.com/umtdlgc/iyzico-case/main/public/assets/iyzico-sonarqube-result.PNG)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -29,19 +46,4 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-# IYZICO Case Notları
 
-Proje içerisinde 2 farklı case yaklaşıma sahip infiniti-scroll içeren anasayfa bulunmaktadır.
-
-Scroll yapılarak data çekme işlemi yapılır ve bir sonraki requestin nereye atılacağı burdan belirlenir. Detay sayfasına gidip geri geldikten sonra state sıfırlanmamış, aynı şekilde durmaktadır. Kalınan pageden scroll edilmeye devam edilebilmektedir.
-
-Örnek Test URL: http://localhost:3000/
-![alt text](https://raw.githubusercontent.com/umtdlgc/iyzico-case/main/public/assets/iyzico-case-homev1.PNG)
-
-Scroll edildikçe url deki page değeri güncellemektedir. Detay sayfasından geri dönüldüğünde yada page parametresi ile gelindiğinde (page=5) ilgili sayfanın datalarını apiden çekilmektedir.Bu casede infiniti-scroll 2 taraflı çekilecek şekilde ayarlanmıştır.
-
-Örnek Test URL: http://localhost:3000/page=5
-![alt text](https://raw.githubusercontent.com/umtdlgc/iyzico-case/main/public/assets/iyzico-case-homev2.PNG)
-
-Proje tamamlandıktan sonrasıda sonarqube üzerinden test edilerek kontrol yapılmıştır.
-![alt text](https://raw.githubusercontent.com/umtdlgc/iyzico-case/main/public/assets/iyzico-sonarqube-result.PNG)
